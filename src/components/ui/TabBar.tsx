@@ -20,7 +20,7 @@ export function TabBar({ tabs, activeId, onSelect }: TabBarProps) {
             <button
               key={tab.id}
               onClick={() => onSelect(tab.id)}
-              className={`px-4 py-2 rounded-full text-[13px] font-semibold cursor-pointer transition-all border-[1.5px] whitespace-nowrap select-none ${
+              className={`px-5 py-2.5 rounded-full text-[15px] font-semibold cursor-pointer transition-all border-[1.5px] whitespace-nowrap select-none ${
                 isActive
                   ? 'bg-accent border-accent text-white'
                   : 'bg-surface border-surface-3 text-muted hover:border-accent hover:text-primary'
@@ -28,7 +28,7 @@ export function TabBar({ tabs, activeId, onSelect }: TabBarProps) {
             >
               {tab.label}
               <span
-                className={`inline-block rounded-full px-1.5 py-px text-[11px] ml-1 ${
+                className={`inline-block rounded-full px-2 py-px text-[13px] ml-1.5 ${
                   isActive ? 'bg-white/15' : 'bg-surface-3'
                 }`}
               >
