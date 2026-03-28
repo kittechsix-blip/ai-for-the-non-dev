@@ -23,9 +23,9 @@ export function QuizBlock({ quiz, answered, correct, onAnswer }: QuizBlockProps)
         Quick Check
       </div>
       <p className="text-[14px] font-semibold mb-4">{quiz.question}</p>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-3">
         {quiz.options.map((opt, i) => {
-          let classes = 'w-full text-left px-4 py-3 rounded-xl text-[13px] font-medium border cursor-pointer transition-all '
+          let classes = 'w-full text-left px-5 py-4 rounded-xl text-[15px] font-medium border cursor-pointer transition-all min-h-[56px] '
           if (!answered) {
             classes += 'bg-surface-2 border-surface-3 text-primary hover:border-accent'
           } else if (i === quiz.correctIndex) {
