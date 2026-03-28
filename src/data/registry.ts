@@ -1,10 +1,12 @@
 import type { ContentItem } from './types'
 import { courses } from './courses'
 import { flashcardDecks } from './flashcards'
+import { games } from './games'
 
 export const allContent: ContentItem[] = [
   ...courses,
   ...flashcardDecks,
+  ...games,
 ]
 
 export type ContentCategory = 'all' | 'courses' | 'games' | 'flashcards' | 'workflows' | 'explainers'

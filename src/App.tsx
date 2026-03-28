@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Home } from './pages/Home'
 import { CoursePage } from './pages/CoursePage'
 import { FlashcardsPage } from './pages/FlashcardsPage'
+import { GamePage } from './pages/GamePage'
 
 function NotFound() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/course/:courseId" element={<CoursePage />} />
         <Route path="/flashcards/:deckId" element={<FlashcardsPage />} />
+        <Route path="/game/:gameId" element={<GamePage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

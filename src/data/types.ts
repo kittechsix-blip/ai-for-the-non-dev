@@ -51,11 +51,22 @@ export interface FlashcardDeck extends ContentItem {
   cards: { front: string; back: string }[]
 }
 
+export interface TerminalCommand {
+  id: string
+  command: string
+  aliases: string[]
+  scenario: string
+  hint: string
+  category: string
+  difficulty: Difficulty
+}
+
 export interface Game extends ContentItem {
   type: 'game'
-  gameType: 'matching' | 'sorting'
+  gameType: 'matching' | 'sorting' | 'terminal-typer'
   pairs?: { term: string; definition: string }[]
   items?: { label: string; sortOrder: number }[]
+  commands?: TerminalCommand[]
 }
 
 export interface Workflow extends ContentItem {

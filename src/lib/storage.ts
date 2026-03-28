@@ -7,12 +7,23 @@ export interface CourseProgress {
   quizCorrect: boolean[]
 }
 
+export interface GameProgress {
+  highScore: number
+  bestStreak: number
+  bestAccuracy: number
+  commandsMastered: string[]
+  commandsToReview: string[]
+  lastPlayed: string
+  roundsCompleted: number
+}
+
 export interface AppProgress {
   courses: Record<string, CourseProgress>
+  games: Record<string, GameProgress>
 }
 
 function defaultProgress(): AppProgress {
-  return { courses: {} }
+  return { courses: {}, games: {} }
 }
 
 function migrateLegacy(): AppProgress | null {
@@ -86,5 +97,25 @@ export function getCourseProgress(courseId: string): CourseProgress {
 export function saveCourseProgress(courseId: string, course: CourseProgress): void {
   const progress = loadProgress()
   progress.courses[courseId] = course
+  saveProgress(progress)
+}
+
+export function getGameProgress(gameId: string): GameProgress {
+  const progress = loadProgress()
+  return progress.games?.[gameId] || {
+    highScore: 0,
+    bestStreak: 0,
+    bestAccuracy: 0,
+    commandsMastered: [],
+    commandsToReview: [],
+    lastPlayed: '',
+    roundsCompleted: 0,
+  }
+}
+
+export function saveGameProgress(gameId: string, game: GameProgress): void {
+  const progress = loadProgress()
+  if (!progress.games) progress.games = {}
+  progress.games[gameId] = game
   saveProgress(progress)
 }
