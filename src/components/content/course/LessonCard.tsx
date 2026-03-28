@@ -37,12 +37,12 @@ export function LessonCard({
 
   return (
     <div
-      className="max-w-[720px] mx-auto px-5 pb-10"
+      className="lesson-container max-w-[720px] mx-auto px-5 pb-10"
       {...swipe}
     >
       <div className="bg-surface border border-surface-3 rounded-[var(--radius-card)] overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,.3)]">
         {/* Header */}
-        <div className="p-6 pb-4">
+        <div className="lesson-header p-6 pb-4">
           <div className="flex items-center gap-3 mb-3">
             <div
               className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
@@ -59,7 +59,7 @@ export function LessonCard({
         </div>
 
         {/* Body */}
-        <div className="px-6 pb-6">
+        <div className="lesson-body px-6 pb-6">
           <AnalogyBox html={lesson.analogy} />
 
           <div className="text-xs font-bold tracking-wider uppercase text-muted mb-2">
@@ -81,7 +81,7 @@ export function LessonCard({
         </div>
 
         {/* Footer */}
-        <div className="px-6 pb-5 flex items-center justify-between gap-3">
+        <div className="lesson-footer px-6 pb-5 flex items-center justify-between gap-3">
           <button
             onClick={onPrev}
             disabled={lessonIdx === 0}

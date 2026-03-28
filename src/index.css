@@ -40,3 +40,39 @@ body {
 
 ::-webkit-scrollbar { display: none; }
 * { scrollbar-width: none; }
+
+/* iPad breakpoints */
+@media (min-width: 768px) {
+  .hero-icon { width: 5rem; height: 5rem; border-radius: 22px; font-size: 36px; }
+  .hero-title { font-size: 2.75rem; }
+  .hero-subtitle { font-size: 17px; max-width: 500px; }
+  .stats-row { gap: 4rem; }
+  .stats-value { font-size: 28px; }
+  .stats-label { font-size: 12px; }
+  .tab-bar { justify-content: center; }
+  .tab-bar button { padding: 0.625rem 1.25rem; font-size: 14px; }
+  .content-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1.25rem; }
+  .content-card { padding: 1.75rem; }
+  .content-card-icon { width: 3.5rem; height: 3.5rem; font-size: 28px; }
+  .content-card-title { font-size: 19px; }
+  .content-card-desc { font-size: 14px; }
+  .lesson-container { max-width: 800px; padding-left: 2rem; padding-right: 2rem; }
+  .lesson-body { padding: 2rem; }
+  .lesson-header { padding: 2rem; padding-bottom: 1.5rem; }
+  .lesson-footer { padding: 2rem; padding-top: 0; }
+  .course-hero { max-width: 800px; padding-top: 3rem; padding-bottom: 2.5rem; }
+}
+
+/* iPad Pro / larger tablets */
+@media (min-width: 1024px) {
+  .hero-icon { width: 5.5rem; height: 5.5rem; border-radius: 26px; font-size: 40px; }
+  .hero-title { font-size: 3rem; }
+  .hero-subtitle { font-size: 18px; max-width: 560px; }
+  .stats-row { gap: 5rem; }
+  .stats-value { font-size: 32px; }
+  .content-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 1.5rem; }
+  .content-card { padding: 2rem; }
+  .content-card-icon { width: 4rem; height: 4rem; font-size: 32px; }
+  .content-card-title { font-size: 20px; }
+  .lesson-container { max-width: 880px; }
+}

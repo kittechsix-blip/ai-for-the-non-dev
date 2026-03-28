@@ -29,7 +29,7 @@ export function CoursePage() {
       <TopBar title={course.title} />
 
       {/* Hero */}
-      <div className="text-center px-6 pt-9 pb-7 max-w-[720px] mx-auto">
+      <div className="course-hero text-center px-6 pt-9 pb-7 max-w-[720px] mx-auto">
         <div className="inline-block bg-accent-glow text-accent font-semibold text-xs px-3.5 py-1 rounded-full mb-3 tracking-wider">
           {course.lessons.length} lessons &middot; {course.estimatedTime} &middot; {course.difficulty.charAt(0).toUpperCase() + course.difficulty.slice(1)}
         </div>

@@ -34,7 +34,7 @@ export function ContentCard({ item, completedCount = 0 }: ContentCardProps) {
       onClick={() => {
         if (item.ready) navigate(`${typeRoutes[item.type]}/${item.id}`)
       }}
-      className={`bg-surface border border-surface-3 rounded-[var(--radius-card)] p-6 cursor-pointer transition-all relative overflow-hidden block ${
+      className={`content-card bg-surface border border-surface-3 rounded-[var(--radius-card)] p-6 cursor-pointer transition-all relative overflow-hidden block ${
         item.ready
           ? 'hover:border-accent hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,.3)] active:scale-[.98]'
           : 'opacity-50 pointer-events-none'
@@ -46,13 +46,13 @@ export function ContentCard({ item, completedCount = 0 }: ContentCardProps) {
         </span>
       )}
       <div
-        className="w-12 h-12 rounded-[14px] flex items-center justify-center text-2xl mb-4"
+        className="content-card-icon w-12 h-12 rounded-[14px] flex items-center justify-center text-2xl mb-4"
         style={{ background: item.iconBg }}
       >
         {item.icon}
       </div>
-      <h3 className="text-[17px] font-bold mb-1.5">{item.title}</h3>
-      <p className="text-[13px] text-muted leading-relaxed mb-4">{item.description}</p>
+      <h3 className="content-card-title text-[17px] font-bold mb-1.5">{item.title}</h3>
+      <p className="content-card-desc text-[13px] text-muted leading-relaxed mb-4">{item.description}</p>
       <div className="flex items-center gap-3 text-xs text-muted">
         {lessonsCount > 0 && (
           <span className="bg-surface-2 px-2.5 py-0.5 rounded-full font-semibold">

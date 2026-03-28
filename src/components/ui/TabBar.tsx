@@ -12,8 +12,8 @@ interface TabBarProps {
 
 export function TabBar({ tabs, activeId, onSelect }: TabBarProps) {
   return (
-    <div className="px-5 pt-6 pb-3 overflow-x-auto">
-      <div className="flex gap-1.5" style={{ minWidth: 'max-content' }}>
+    <div className="px-5 pt-6 pb-3 overflow-x-auto md:px-8">
+      <div className="tab-bar flex gap-1.5 md:gap-2" style={{ minWidth: 'max-content' }}>
         {tabs.map(tab => {
           const isActive = tab.id === activeId
           return (
