@@ -38,7 +38,7 @@ function getMultiplier(streak: number): number {
   return 1
 }
 
-function normalizeInput(input: string, isBeginnerAutoSlash: boolean): string {
+function normalizeInput(input: string): string {
   let val = input.trim().toLowerCase()
   if (!val.startsWith('/')) val = '/' + val
   return val
@@ -75,10 +75,9 @@ export function TerminalGameRound({ commands, difficulty, inputMode, onComplete,
 
   const inputRef = useRef<HTMLInputElement>(null)
   const questionStartRef = useRef(Date.now())
-  const timerRef = useRef<ReturnType<typeof setInterval>>()
+  const timerRef = useRef<ReturnType<typeof setInterval> | undefined>(undefined)
 
   const current = questions[questionIdx]
-  const isPerfect = answers.length > 0 && answers.every(a => a.correct)
 
   // Generate choices for multiple-choice mode
   useEffect(() => {
@@ -106,7 +105,7 @@ export function TerminalGameRound({ commands, difficulty, inputMode, onComplete,
   // Time's up
   useEffect(() => {
     if (timeLeft === 0 && !flashState) {
-      handleAnswer(false, '')
+      handleAnswer(false)
     }
   }, [timeLeft, flashState])
 
@@ -117,7 +116,7 @@ export function TerminalGameRound({ commands, difficulty, inputMode, onComplete,
     }
   }, [questionIdx, flashState, inputMode])
 
-  const handleAnswer = useCallback((isCorrect: boolean, given: string) => {
+  const handleAnswer = useCallback((isCorrect: boolean) => {
     clearInterval(timerRef.current)
     const elapsed = Date.now() - questionStartRef.current
 
@@ -176,16 +175,16 @@ export function TerminalGameRound({ commands, difficulty, inputMode, onComplete,
 
   const handleSubmit = useCallback(() => {
     if (flashState || !userInput.trim()) return
-    const normalized = normalizeInput(userInput, difficulty === 'beginner')
+    const normalized = normalizeInput(userInput)
     const allValid = [current.command, ...current.aliases].map(c => c.toLowerCase())
     const isCorrect = allValid.includes(normalized)
-    handleAnswer(isCorrect, normalized)
+    handleAnswer(isCorrect)
   }, [flashState, userInput, current, difficulty, handleAnswer])
 
   const handleChoiceClick = useCallback((choice: string) => {
     if (flashState) return
     const isCorrect = choice === current.command
-    handleAnswer(isCorrect, choice)
+    handleAnswer(isCorrect)
   }, [flashState, current, handleAnswer])
 
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
@@ -198,7 +197,7 @@ export function TerminalGameRound({ commands, difficulty, inputMode, onComplete,
       setShowHint(true)
     } else if (e.key === 'Escape') {
       e.preventDefault()
-      handleAnswer(false, '')
+      handleAnswer(false)
     }
   }, [handleSubmit, difficulty, handleAnswer])
 
