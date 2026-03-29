@@ -61,12 +61,28 @@ export interface TerminalCommand {
   difficulty: Difficulty
 }
 
+export interface SequenceItem {
+  id: string
+  label: string
+  correctOrder: number
+}
+
+export interface ScenarioQuestion {
+  scenario: string
+  question: string
+  options: string[]
+  correctIndex: number
+  explanation: string
+}
+
 export interface Game extends ContentItem {
   type: 'game'
-  gameType: 'matching' | 'sorting' | 'terminal-typer'
+  gameType: 'matching' | 'sorting' | 'terminal-typer' | 'skill-builder'
   pairs?: { term: string; definition: string }[]
   items?: { label: string; sortOrder: number }[]
   commands?: TerminalCommand[]
+  sequenceItems?: SequenceItem[]
+  scenarioQuestions?: ScenarioQuestion[]
 }
 
 export interface Workflow extends ContentItem {

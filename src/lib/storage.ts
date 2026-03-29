@@ -17,13 +17,20 @@ export interface GameProgress {
   roundsCompleted: number
 }
 
+export interface WorkflowProgress {
+  currentStep: number
+  checkedItems: Record<number, boolean[]>
+  completed: boolean
+}
+
 export interface AppProgress {
   courses: Record<string, CourseProgress>
   games: Record<string, GameProgress>
+  workflows: Record<string, WorkflowProgress>
 }
 
 function defaultProgress(): AppProgress {
-  return { courses: {}, games: {} }
+  return { courses: {}, games: {}, workflows: {} }
 }
 
 function migrateLegacy(): AppProgress | null {
@@ -117,5 +124,21 @@ export function saveGameProgress(gameId: string, game: GameProgress): void {
   const progress = loadProgress()
   if (!progress.games) progress.games = {}
   progress.games[gameId] = game
+  saveProgress(progress)
+}
+
+export function getWorkflowProgress(workflowId: string): WorkflowProgress {
+  const progress = loadProgress()
+  return progress.workflows?.[workflowId] || {
+    currentStep: 0,
+    checkedItems: {},
+    completed: false,
+  }
+}
+
+export function saveWorkflowProgress(workflowId: string, workflow: WorkflowProgress): void {
+  const progress = loadProgress()
+  if (!progress.workflows) progress.workflows = {}
+  progress.workflows[workflowId] = workflow
   saveProgress(progress)
 }

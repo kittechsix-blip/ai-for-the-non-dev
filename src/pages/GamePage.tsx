@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { games } from '../data/games'
 import { TopBar } from '../components/layout/TopBar'
 import { TerminalTyperGame } from '../components/content/game/TerminalTyperGame'
+import { SkillBuilderGame } from '../components/content/game/SkillBuilderGame'
 
 export function GamePage() {
   const { gameId } = useParams<{ gameId: string }>()
@@ -28,6 +29,9 @@ export function GamePage() {
       <TopBar title={game.title} />
       {game.gameType === 'terminal-typer' && (
         <TerminalTyperGame game={game} />
+      )}
+      {game.gameType === 'skill-builder' && (
+        <SkillBuilderGame game={game} />
       )}
     </div>
   )

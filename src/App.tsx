@@ -3,6 +3,7 @@ import { Home } from './pages/Home'
 import { CoursePage } from './pages/CoursePage'
 import { FlashcardsPage } from './pages/FlashcardsPage'
 import { GamePage } from './pages/GamePage'
+import { WorkflowPage } from './pages/WorkflowPage'
 
 function NotFound() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/course/:courseId" element={<CoursePage />} />
         <Route path="/flashcards/:deckId" element={<FlashcardsPage />} />
         <Route path="/game/:gameId" element={<GamePage />} />
+        <Route path="/workflow/:workflowId" element={<WorkflowPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

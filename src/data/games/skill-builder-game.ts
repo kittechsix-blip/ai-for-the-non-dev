@@ -1,0 +1,177 @@
+import type { Game, SequenceItem, ScenarioQuestion } from '../types'
+
+export const skillBuilderSequence: SequenceItem[] = [
+  { id: 'concept', label: 'Understand what a skill is', correctOrder: 1 },
+  { id: 'tool', label: 'Open the Skill Builder in Wizard mode', correctOrder: 2 },
+  { id: 'name', label: 'Name your skill (kebab-case)', correctOrder: 3 },
+  { id: 'triggers', label: 'Write trigger phrases', correctOrder: 4 },
+  { id: 'description', label: 'Write the skill description', correctOrder: 5 },
+  { id: 'anatomy', label: 'Understand the SKILL.md structure', correctOrder: 6 },
+  { id: 'instructions', label: 'Write your steps and instructions', correctOrder: 7 },
+  { id: 'examples', label: 'Add real examples with input and output', correctOrder: 8 },
+  { id: 'test', label: 'Test with evals', correctOrder: 9 },
+  { id: 'export', label: 'Export and use your skill', correctOrder: 10 },
+]
+
+export const skillBuilderScenarios: ScenarioQuestion[] = [
+  {
+    scenario: 'You built a skill to review emails, but it never activates when you ask Claude to "look over this draft."',
+    question: 'What is most likely the problem?',
+    options: [
+      'The Steps section is too vague',
+      'The trigger phrases are too narrow',
+      'The Output Format is wrong',
+      'The skill name has spaces in it',
+    ],
+    correctIndex: 1,
+    explanation: 'Trigger phrases tell Claude WHEN to activate. If "look over this draft" isn\'t listed as a trigger, the skill won\'t fire. Add more phrase variations!',
+  },
+  {
+    scenario: 'Your meeting-summarizer skill sometimes gives bullet points and sometimes gives long paragraphs.',
+    question: 'Which section of SKILL.md should you fix?',
+    options: [
+      'The frontmatter name field',
+      'The Overview section',
+      'The Output Format section',
+      'The trigger phrases',
+    ],
+    correctIndex: 2,
+    explanation: 'The Output Format section tells Claude exactly what the result should look like. Without it, Claude guesses — and guesses inconsistently.',
+  },
+  {
+    scenario: 'You\'re naming a skill that helps write social media posts.',
+    question: 'Which name follows the correct format?',
+    options: [
+      'Social Media Writer',
+      'social_media_writer',
+      'social-media-writer',
+      'socialMediaWriter',
+    ],
+    correctIndex: 2,
+    explanation: 'Skill names use kebab-case: lowercase letters with dashes between words. No spaces, no underscores, no capitals.',
+  },
+  {
+    scenario: 'You want Claude to review code AND suggest improvements, but it only does one or the other.',
+    question: 'Where should you make changes?',
+    options: [
+      'Add more trigger phrases',
+      'Make the Steps section more specific with numbered instructions',
+      'Change the skill name',
+      'Remove the examples',
+    ],
+    correctIndex: 1,
+    explanation: 'When Claude skips steps, the fix is almost always making the Steps section more specific. "1. Review the code. 2. List issues. 3. Suggest improvements for each issue." — numbered and explicit.',
+  },
+  {
+    scenario: 'A teammate wants to use your skill but doesn\'t have Claude Code installed.',
+    question: 'How can they still use it?',
+    options: [
+      'They can\'t — skills only work with Claude Code',
+      'Copy the SKILL.md text and paste it at the start of a Claude conversation',
+      'Email the .zip file to Claude',
+      'Upload it to ChatGPT instead',
+    ],
+    correctIndex: 1,
+    explanation: 'The SKILL.md content is just instructions. Anyone can paste it into a Claude chat and get the same results — Claude Code just automates the process.',
+  },
+  {
+    scenario: 'You\'re writing the description field in your SKILL.md frontmatter.',
+    question: 'What belongs here?',
+    options: [
+      'The full step-by-step instructions',
+      'A one-sentence summary plus trigger phrases',
+      'Just the skill name repeated',
+      'A list of all the output formats',
+    ],
+    correctIndex: 1,
+    explanation: 'The frontmatter description is Claude\'s decision-maker — a short summary of what the skill does plus the trigger phrases that activate it. The detailed instructions go in the body.',
+  },
+  {
+    scenario: 'Your skill\'s eval test shows that Claude gives a good response, but the format is wrong (paragraphs instead of bullet points).',
+    question: 'What\'s the fastest fix?',
+    options: [
+      'Rewrite all the trigger phrases',
+      'Add a clear Output Format section with the exact format you want',
+      'Delete the skill and start over',
+      'Change the skill name to include "bullets"',
+    ],
+    correctIndex: 1,
+    explanation: 'The Output Format section is specifically designed to solve this. Tell Claude exactly what structure you want: "Respond with a bulleted list, one item per line."',
+  },
+  {
+    scenario: 'You\'re trying to decide what to build for your very first skill.',
+    question: 'Which approach is best?',
+    options: [
+      'Build something complex to test all the features',
+      'Automate a task you already repeat with Claude weekly',
+      'Copy someone else\'s skill exactly',
+      'Build a skill for a task you\'ve never done before',
+    ],
+    correctIndex: 1,
+    explanation: 'Start with something you ALREADY ask Claude to do repeatedly. Your first skill should automate a task you\'re tired of re-explaining. Simple and real beats complex and hypothetical.',
+  },
+  {
+    scenario: 'The two dashes (---) sections at the top of your SKILL.md file contain your name and description.',
+    question: 'What is this section called?',
+    options: [
+      'The header block',
+      'The frontmatter',
+      'The config file',
+      'The metadata table',
+    ],
+    correctIndex: 1,
+    explanation: 'Frontmatter is the section between the two --- lines. Think of it like the label on a filing folder — it tells Claude the skill\'s name and when to use it.',
+  },
+  {
+    scenario: 'You added one example to your skill, but Claude still occasionally produces unexpected results for different inputs.',
+    question: 'What would help most?',
+    options: [
+      'Remove the example entirely',
+      'Add a second example showing a different scenario',
+      'Make the skill name longer and more descriptive',
+      'Add more trigger phrases',
+    ],
+    correctIndex: 1,
+    explanation: 'One example teaches the pattern. Two examples teach Claude to adapt. If your email reviewer has one example for a casual email, add a second for a formal one — this shows Claude the range.',
+  },
+  {
+    scenario: 'You\'re in the Skill Builder and see four tabs: Wizard, Editor, Eval Builder, Reference.',
+    question: 'Which one should a beginner start with?',
+    options: [
+      'Editor — for maximum control',
+      'Reference — read all docs first',
+      'Wizard — it guides you step by step',
+      'Eval Builder — test before you build',
+    ],
+    correctIndex: 2,
+    explanation: 'Wizard mode breaks the whole process into bite-sized sections so you never have to stare at a blank page. It\'s like TurboTax for Claude instructions.',
+  },
+  {
+    scenario: 'Your skill has great instructions but the frontmatter description is empty.',
+    question: 'What will happen?',
+    options: [
+      'Claude will still use the skill normally',
+      'The skill will crash',
+      'Claude won\'t know when to activate the skill',
+      'The Output Format will stop working',
+    ],
+    correctIndex: 2,
+    explanation: 'The frontmatter description is what Claude reads to decide WHEN to use a skill. Without it, even perfect instructions will never run — it\'s like having a recipe with no name on the index card.',
+  },
+]
+
+export const skillBuilderGame: Game = {
+  id: 'skill-builder-challenge',
+  type: 'game',
+  gameType: 'skill-builder',
+  title: 'Skill Builder Challenge',
+  description: 'Put the steps in order and solve real skill-building scenarios.',
+  icon: '🧪',
+  iconBg: 'linear-gradient(135deg, #7c3aed, #2dd4bf)',
+  difficulty: 'beginner',
+  estimatedTime: '10 min',
+  tags: ['skills', 'claude', 'beginner', 'game', 'quiz'],
+  ready: true,
+  sequenceItems: skillBuilderSequence,
+  scenarioQuestions: skillBuilderScenarios,
+}
