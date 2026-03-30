@@ -111,3 +111,26 @@ body {
   .content-card-title { font-size: 20px; }
   .lesson-container { max-width: 880px; }
 }
+
+/* Touch-friendly minimum sizes */
+button,
+input[type="checkbox"],
+.tap-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Workflow-specific responsive */
+@media (min-width: 768px) {
+  .workflow-nav-btn {
+    min-height: 56px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .workflow-nav-btn {
+    min-height: 64px;
+    font-size: 18px;
+  }
+}
