@@ -4,6 +4,7 @@ import { claudeCodeSetupChecklist } from './claude-code-setup-checklist'
 import { keepingAiOnTrack } from './keeping-ai-on-track'
 import { theAiLoop } from './the-ai-loop'
 import { yourAiTeam } from './your-ai-team'
+import { lockItDown } from './lock-it-down'
 
 export const workflows: Workflow[] = [
   buildAClaudeSkill,
@@ -11,4 +12,5 @@ export const workflows: Workflow[] = [
   yourAiTeam,
   theAiLoop,
   keepingAiOnTrack,
+  lockItDown,
 ]

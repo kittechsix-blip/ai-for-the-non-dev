@@ -4,6 +4,7 @@ import { CoursePage } from './pages/CoursePage'
 import { FlashcardsPage } from './pages/FlashcardsPage'
 import { GamePage } from './pages/GamePage'
 import { WorkflowPage } from './pages/WorkflowPage'
+import { ExplainerPage } from './pages/ExplainerPage'
 
 function NotFound() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/flashcards/:deckId" element={<FlashcardsPage />} />
         <Route path="/game/:gameId" element={<GamePage />} />
         <Route path="/workflow/:workflowId" element={<WorkflowPage />} />
+        <Route path="/explain/:explainerId" element={<ExplainerPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
