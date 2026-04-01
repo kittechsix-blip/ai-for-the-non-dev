@@ -5,6 +5,7 @@ import { keepingAiOnTrack } from './keeping-ai-on-track'
 import { theAiLoop } from './the-ai-loop'
 import { yourAiTeam } from './your-ai-team'
 import { lockItDown } from './lock-it-down'
+import { tokenEfficiency } from './token-efficiency'
 
 export const workflows: Workflow[] = [
   buildAClaudeSkill,
@@ -13,4 +14,5 @@ export const workflows: Workflow[] = [
   theAiLoop,
   keepingAiOnTrack,
   lockItDown,
+  tokenEfficiency,
 ]
